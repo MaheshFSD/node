@@ -34,3 +34,19 @@ registrationEvent.on("user-registered",()=>{
 })
 
 registrationEvent.emit("user-registered")
+
+const dataSendingEvent=new EventEmitter()
+
+dataSendingEvent.on("data-sending",(data)=>{
+    console.log(data)
+})
+
+dataSendingEvent.on("data-sending",(data)=>{
+    console.log(data.name)
+})
+
+dataSendingEvent.on("data-sending",({name})=>{
+    console.log(name)
+})
+
+dataSendingEvent.emit("data-sending",{name: "Mahesh"})
