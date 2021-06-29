@@ -30,23 +30,16 @@ registrationEvent.on("user-registered",()=>{
 registrationEvent.on("user-registered",()=>{
     //send an email to the admin
     console.log("Admin listener 1")
-
 })
 
 registrationEvent.emit("user-registered")
 
 const dataSendingEvent=new EventEmitter()
 
-dataSendingEvent.on("data-sending",(data)=>{
-    console.log(data)
-})
+const {callback1,callback2,callback3} = require("./regstration-event-listeners")
 
-dataSendingEvent.on("data-sending",(data)=>{
-    console.log(data.name)
-})
+dataSendingEvent.on("data-sending",callback1),
+dataSendingEvent.on("data-sending",callback2),
+dataSendingEvent.on("data-sending",callback3),
 
-dataSendingEvent.on("data-sending",({name})=>{
-    console.log(name)
-})
-
-dataSendingEvent.emit("data-sending",{name: "Mahesh"})
+dataSendingEvent.emit("data-sending",{name: "Mahesh"}) 
